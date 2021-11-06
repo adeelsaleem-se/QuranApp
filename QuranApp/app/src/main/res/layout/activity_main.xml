@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A1FFFFFF"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:gravity="center"
         android:text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,6 +47,7 @@
                 android:layout_gravity="center|center_horizontal"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:text="Surah: "
                 android:textAlignment="center"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -75,17 +78,32 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="191dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal"
-        android:layout_marginBottom="100dp"
-        android:text="Get Verse"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:onClick="getRandomVerse"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="60dp"
+            android:onClick="share"
+            android:layout_height="wrap_content"
+            app:icon="@android:drawable/ic_menu_share"
+            app:iconTint="#000000" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:onClick="getRandomVerse"
+            android:text="Get Verse" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
