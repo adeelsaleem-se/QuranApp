@@ -2,8 +2,10 @@ package com.example.quranapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     TextView surahIndex;
     TextView verseIndex;
     LinearLayout layout;
+    Button send;
 
     public String getIndexedVerse(int index){
 
@@ -6280,12 +6283,13 @@ public class MainActivity extends AppCompatActivity {
         surahIndex = findViewById(R.id.surahIndex);
         verseIndex = findViewById(R.id.verseIndex);
         layout = findViewById(R.id.linearLayout);
+        send = findViewById(R.id.share);
     }
 
     public void getRandomVerse(View view) {
 
         layout.setVisibility(View.VISIBLE);
-
+        send.setVisibility(View.VISIBLE);
         Random random = new Random();
         int index = random.nextInt(6236);
 
@@ -6306,6 +6310,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void share(View view) {
 
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, txt.getText());
+        sendIntent.setType("text/plain");
 
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
     }
 }

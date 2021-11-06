@@ -89,11 +89,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/share"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
-            android:onClick="share"
             android:layout_height="wrap_content"
+            android:onClick="share"
+            android:visibility="gone"
             app:icon="@android:drawable/ic_menu_share"
             app:iconTint="#000000" />
 
