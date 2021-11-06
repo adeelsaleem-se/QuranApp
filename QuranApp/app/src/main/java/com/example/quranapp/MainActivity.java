@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.File;
@@ -18,9 +19,10 @@ import java.io. * ;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     TextView txt;
+    TextView surahIndex;
+    TextView verseIndex;
+    LinearLayout layout;
 
     public String getIndexedVerse(int index){
 
@@ -6275,16 +6277,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txt = findViewById(R.id.textViewMain);
-
+        surahIndex = findViewById(R.id.surahIndex);
+        verseIndex = findViewById(R.id.verseIndex);
+        layout = findViewById(R.id.linearLayout);
     }
 
     public void getRandomVerse(View view) {
+
+        layout.setVisibility(View.VISIBLE);
+
         Random random = new Random();
         int index = random.nextInt(6236);
 
         String verse = getIndexedVerse(index);
 
-        System.out.println(verse.charAt(0));
+        int temp = verse.indexOf('|');
+        surahIndex.setText("Surah: " + verse.substring(0,temp));
+        verse = verse.substring(temp+1,verse.length());
+
+        temp = verse.indexOf('|');
+        verseIndex.setText("Verse: " + verse.substring(0,temp));
+        verse = verse.substring(temp+1,verse.length());
+
         txt.setText(verse);
 
 
